@@ -16,6 +16,7 @@ namespace Loader
 	{
 		public string OutputFolder { get; set; }
 		public string DataRoot { get; set; }
+		public string UnknownShop { get; set; }
 
 		string[] avoids =
 		{
@@ -208,6 +209,7 @@ namespace Loader
 			if (ShopNames.Lookup.ContainsKey(internalName)) return ShopNames.Lookup[internalName];
 
 			Console.WriteLine($"Don't know the friendly name for shop '{internalName}'");
+			File.AppendAllText(UnknownShop, $"Don't know the friendly name for shop '{internalName}'{Environment.NewLine}");
 			return internalName;
 		}
 	}

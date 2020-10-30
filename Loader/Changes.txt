@@ -1,0 +1,144 @@
+Hi Richard,
+
+What an interesting piece of code! I've not done C# before, but I do have experience with many other languages.
+    Various assemblers, BASIC, Pascal, C, VB, VBA, Perl, Powershell and Python.
+
+
+
+Missing Shop Names:
+    I have been through the missing shop names list and updated and added as many entries as I could by tracking them down in the XML files.
+        Updated:     4
+        Added:      85
+        Unresolved: 22
+
+    Of those that remain unresolved, I believe the following may require reference to the contents of the 'layer0.xml' file. These are generic shops that appear in multiple locations and all sell exactly the same items.
+        BurritoBar
+        Ellroys
+        HotDogBar
+        NoodleBar
+        JuiceBar
+        PizzaBar
+
+    There are still 3 Shubin Mining Facilities on Microtech that need to be resolved.
+        stanton_4_shubin_001    - Could be either SM0-10 or SM0-22 as they buy and sell identical items. Your choice.
+        stanton_4_shubin_002    - Could be either SM0-10 or SM0-22 as they buy and sell identical items. Your choice.
+        stanton_4_shubin_005    - Does not appear to exist outside of the XML files
+
+    The 'CasabaOutlet_Food' entry may refer to sales of water in 'Casaba Outlet' stores.
+
+    Not sure about the following but may also be referenced in 'layer0.xml' as they may have multiple locations:
+        CargoOffice_Rentals
+        RestStop_Bars
+
+    The 'CryAstro_Crusader_01' entry could refer to 'Cry-Astro Service 042' on Crusader.
+
+    The 'Survival' entry may refer to 'Medical' at Area 18.
+
+    These enties seem to relate to items sold in either the Burrito Bar or Hot Dog Bar so not sure why they appear in this list of missing shop names:
+        Burrito_Cart_Bottle_Water
+        Burrito_Cart_Can_Fizzz_Soursop
+        Burrito_Cart_Can_Fizzz_Peach
+        Burrito_Cart_Can_Fizzz_Muscat
+        HotDog_Cart_Bottle_Water
+        HotDog_Cart_Can_Fizzz
+        HotDog_Cart_Can_Fizzz_Berry
+        HotDog_Cart_Can_Pips
+
+    There are also two names on Microtech that should appear but do not:
+        Outpost 54
+        The Necropolis
+
+    Sorry, I know they entries all show 01 Nov, but for the moment I have run out of time tracking down the unresolved shop names.
+
+
+
+Shop Code Changes:
+    I have also added a section of code to write out all the currently missing names into a timestamped file in the output folder.
+
+    This is to make it stand out from the  other files and also so it could be easily kept for future reference.
+
+    They are written to file in the order they are found.
+
+    Example Name:
+        missing_shops-20201030111708.log
+
+    Example Content:
+        Loader Starting: 30 Oct 2020 12:03:29
+        Don't know the friendly name for shop 'CasabaOutlet_Food'
+        Don't know the friendly name for shop 'stanton_4_shubin_001'
+        Don't know the friendly name for shop 'stanton_4_shubin_002'
+        Don't know the friendly name for shop 'stanton_4_shubin_005'
+        Don't know the friendly name for shop 'CryAstro_Crusader_01'
+        Don't know the friendly name for shop 'MISC'
+        Don't know the friendly name for shop 'Ellroys'
+        Don't know the friendly name for shop 'Survival'
+        Don't know the friendly name for shop 'BurritoBar'
+        Don't know the friendly name for shop 'Burrito_Cart_Bottle_Water'
+        Don't know the friendly name for shop 'Burrito_Cart_Can_Fizzz_Soursop'
+        Don't know the friendly name for shop 'Burrito_Cart_Can_Fizzz_Peach'
+        Don't know the friendly name for shop 'Burrito_Cart_Can_Fizzz_Muscat'
+        Don't know the friendly name for shop 'HotDogBar'
+        Don't know the friendly name for shop 'HotDog_Cart_Bottle_Water'
+        Don't know the friendly name for shop 'HotDog_Cart_Can_Fizzz'
+        Don't know the friendly name for shop 'HotDog_Cart_Can_Fizzz_Berry'
+        Don't know the friendly name for shop 'HotDog_Cart_Can_Pips'
+        Don't know the friendly name for shop 'NoodleBar'
+        Don't know the friendly name for shop 'PizzaBar'
+        Don't know the friendly name for shop 'JuiceBar'
+        Don't know the friendly name for shop 'RestStop_Bars'
+        Don't know the friendly name for shop 'CargoOffice_Rentals'
+
+
+
+Program Code Changes:
+    I have left the debugger changes inserted by VSCode in the code.
+
+    By writing so much to screen (at least on a PC), the code really slows down.
+
+    I have added some stopwatches to determine how long each section takes. No other use was made of the PC while each of the examples were running.
+
+    After running the third example test, I restored the code writes in the code files.
+
+
+    Debugging In VSCode:
+        Initialise        : 0 hrs 0 mins 0.630 secs
+        Load Labels       : 0 hrs 0 mins 0.214 secs
+        Load Manufacturers: 0 hrs 0 mins 2.894 secs
+        Load Ammo         : 0 hrs 0 mins 4.76 secs
+        Load Items        : 0 hrs 14 mins 36.348 secs
+        Load Ships        : 0 hrs 0 mins 17.901 secs
+        Load Shops        : 0 hrs 0 mins 8.61 secs
+        Load Starmp       : 0 hrs 0 mins 10.690 secs
+        Total Elapsed     : 0 hrs 15 mins 20.841 secs
+
+    Executable:
+        Initialise        : 0 hrs 0 mins 0.7 secs
+        Load Labels       : 0 hrs 0 mins 0.134 secs
+        Load Manufacturers: 0 hrs 0 mins 0.696 secs
+        Load Ammo         : 0 hrs 0 mins 2.370 secs
+        Load Items        : 0 hrs 12 mins 11.264 secs
+        Load Ships        : 0 hrs 0 mins 14.504 secs
+        Load Shops        : 0 hrs 0 mins 6.606 secs
+        Load Starmp       : 0 hrs 0 mins 4.163 secs
+        Total Elapsed     : 0 hrs 12 mins 39.750 secs
+
+    Executable Without Screen Writes:
+        Initialise        : 0 hrs 0 mins 0.694 secs
+        Load Labels       : 0 hrs 0 mins 0.121 secs
+        Load Manufacturers: 0 hrs 0 mins 0.548 secs
+        Load Ammo         : 0 hrs 0 mins 2.1 secs
+        Load Items        : 0 hrs 8 mins 35.621 secs
+        Load Ships        : 0 hrs 0 mins 10.420 secs
+        Load Shops        : 0 hrs 0 mins 5.582 secs
+        Load Starmp       : 0 hrs 0 mins 3.381 secs
+        Total Elapsed     : 0 hrs 8 mins 59.154 secs
+
+    If you wish to speed up the code, it might be worth writing the names of all the processed XML files etc. to a text file instead of the screen.
+
+    I've added a timestamped 'mainlogfile' variable to Program.cs, but not implemented it as I have no idea how to. Sorry.
+
+
+
+I hope you find this useful.
+
+Tony
